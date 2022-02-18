@@ -2,7 +2,14 @@
 
 App still in development  
 
-### Goals:  
+## Install dependencies
+
+Enter into the project directory (Ex: `web-app`) and use:
+
+`npm run start` to start a live-server of the current project
+`npm run build` to build the current project to a ./build
+
+## Goals:  
 - [ ] Usernames
 - [ ] Chatrooms
 - [ ] Database

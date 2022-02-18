@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "nodemon",
-    "test": "echo \"Test Successful ✅\""
+    "build": "tsc --project ./"
   },
   "repository": {
     "type": "git",
