@@ -1,5 +1,8 @@
-function App() {
-  return <div className="App"></div>
-}
+export function App() {
 
-export { App }
+  return (
+    <div className="App">
+
+    </div>
+  )
+}
