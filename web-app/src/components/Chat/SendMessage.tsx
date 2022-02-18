@@ -1,8 +1,6 @@
 import { FormEvent, useState } from 'react'
-import { io } from 'socket.io-client'
+import { webSocket } from '../../services/webSocket'
 import ChatStyles from './style.module.css'
-
-const socket = io('ws://localhost:8000')
 
 export function SendMessage() {
   const [message, setMessage] = useState('')  
@@ -12,7 +10,7 @@ export function SendMessage() {
 
     if (!message.trim()) return
 
-    await socket.emit('message', message.trim())
+    await webSocket.emit('message', message.trim())
     setMessage('')
   }
 
