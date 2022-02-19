@@ -1,6 +1,8 @@
 import { httpServer } from './server'
+import { port, hostname, argv, help } from './parseArguments'
 
-const port = 8000
-const hostname = 'localhost'
-
-httpServer.listen(port, hostname, () => console.log(`Server Listening on port: ${port}`))
+argv?.h || argv?.help
+  ? console.log(help())
+  : httpServer.listen(port, hostname, () => {
+    console.log(`Server Listening on http://${hostname}:${port}/`)
+  })
