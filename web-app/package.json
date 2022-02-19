@@ -1,6 +1,6 @@
 {
   "name": "react-message-web",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The web-app side of the react-message-app",
   "private": true,
   "scripts": {

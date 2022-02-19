@@ -1,6 +1,6 @@
 {
   "name": "react-message-server",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The server side of the react-message-app",
   "main": "index.ts",
   "scripts": {
