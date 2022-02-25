@@ -1,9 +1,11 @@
-import { Chat } from './components/Chat/Chat'
+// import { Chat } from './components/Chat/Chat'
+import { Login } from './components/Login/Login'
 
 export function App() {
   return (
     <div className="App">
-      <Chat></Chat>
+      <Login></Login>
+      {/* <Chat></Chat> */}
     </div>
   )
 }
