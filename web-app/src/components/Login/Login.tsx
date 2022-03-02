@@ -1,15 +1,16 @@
 import { FormEvent, useState } from 'react'
 
 export function Login() {
-  const [ name, setName ] = useState('')
+  const [name, setName] = useState('')
+  const [image, setImage] = useState()
 
   function handleLogin(event: FormEvent) {
     event.preventDefault()
 
     if (!name.trim()) return
+    if (!image) return
 
-
-    setName('')
+    console.log(name, image)
   }
 
   return (
@@ -21,6 +22,11 @@ export function Login() {
           onChange={(event) => setName(event.target.value)}
           value={name}
           placeholder="Put your name here"
+        />
+        <input
+          type="file"
+          // TODO: Fix type of event
+          onChange={(event) => setImage(event.target.files[0])}
         />
         <button type="submit">Send</button>
       </form>
