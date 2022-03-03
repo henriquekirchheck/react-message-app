@@ -76,3 +76,29 @@
 .errorAnimation {
   animation: error_shake 0.5s 1 linear;
 }
+
+.imagePreview {
+  display: flex;
+  flex-direction: row;
+  height: 75px;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+
+.previewImage {
+  display: block;
+  border: 2px transparent;
+  border-radius: 5px;
+}
+
+.imageInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.info {
+  margin: 0;
+}

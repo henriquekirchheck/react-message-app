@@ -5,15 +5,16 @@ import LoginStyles from './style.module.css'
 export function Login() {
   const [name, setName] = useState<string>('')
   const [image, setImage] = useState<File | undefined>(undefined)
+  const [preview, setPreview] = useState<string>('')
 
   const { getRootProps, getInputProps, isDragAccept, isDragReject } =
     useDropzone({
       accept: 'image/*',
       multiple: false,
       onDrop: (acceptedFiles) => {
-        if (acceptedFiles[0]) {
-          setImage(acceptedFiles[0])
-        }
+        URL.revokeObjectURL(preview)
+        setImage(acceptedFiles[0])
+        setPreview(URL.createObjectURL(acceptedFiles[0]))
       },
     })
 
@@ -36,10 +37,37 @@ export function Login() {
     }
   }
 
+  function thumbnail() {
+    if (!image) return
+
+    const getHumanReadableSize = () => {
+      if (image.size < 1024) {
+        return `${image.size} B`
+      } else if (image.size < 1024**2) {
+        return `${Math.round(image.size / 1024)} KB`
+      } else if (image.size < 1024**3) {
+        return `${Math.round(image.size / 1024**2)} MB`
+      } else if (image.size > 1024**3) {
+        return `${Math.round(image.size / 1024**3)} GB`
+      }
+    }
+
+    return (
+      <div className={LoginStyles.imagePreview}>
+        <img src={preview} alt={image.name} className={LoginStyles.previewImage}/>
+        <div className={LoginStyles.imageInfo}>
+          <p className={LoginStyles.info}><strong>Name:</strong> {image.name}</p>
+          <p className={LoginStyles.info}><strong>Size:</strong> {getHumanReadableSize()}</p>
+        </div>
+      </div>
+    )
+  }
+
   function handleLogin(event: FormEvent) {
     event.preventDefault()
 
     if (!name.trim()) return
+    URL.revokeObjectURL(preview)
 
     console.log(name, image)
   }
@@ -58,7 +86,7 @@ export function Login() {
         />
         <div {...getRootProps()} className={dropzoneStyle}>
           <input {...getInputProps()} />
-          {dropzoneText()}
+          {image ? thumbnail() : dropzoneText()}
         </div>
         <button type="submit" className={LoginStyles.submitButton}>
           Login
