@@ -6,7 +6,73 @@
 }
 
 .loginForm {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   border-radius: 10px;
   background-color: var(--elevated-background-color);
+}
+
+.title {
+  text-align: center;
+  margin-top: 0;
+}
+
+.nameInput {
+  padding: 8px;
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+  border: 2px transparent;
+  border-radius: 5px;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 45px;
+  background-image: linear-gradient(to right, var(--primary-color), var(--primary-color-add));
+  border: 2px transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.imageInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 375px;
+  height: 75px;
+  padding: 25px;
+  background-color: var(--highlight-color);
+  margin: 10px 0;
+  border: 2px dashed var(--text-color);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border .24s ease-in-out;
+}
+
+.imageActive {
+  border-color: var(--warning-color);
+}
+
+.imageAccept {
+  border-color: var(--success-color);
+}
+
+.imageReject {
+  border-color: var(--error-color);
+}
+
+@keyframes error_shake {
+  0% { transform: translate(8px);}
+  20% { transform: translate(-8px);}
+  40% { transform: translate(4px);}
+  60% { transform: translate(-4px);}
+  80% { transform: translate(2px);}
+  100% { transform: translate(0px);}
+}
+
+.errorAnimation {
+  animation: error_shake 0.5s 1 linear;
 }

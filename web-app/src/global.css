@@ -1,5 +1,16 @@
 @import './nord.css';
 
+:root {
+  --error-color: var(--nord11);
+  --danger-color: var(--nord12);
+  --warning-color: var(--nord13);
+  --success-color: var(--nord14);
+  --primary-color: var(--nord8);
+  --primary-color-add: var(--nord7);
+  --secondary-color: var(--nord9);
+  --tertiary-color: var(--nord10)
+}
+
 :root, html[data-theme='dark'] {
   --background-color: var(--nord0);
   --elevated-background-color: var(--nord1);
