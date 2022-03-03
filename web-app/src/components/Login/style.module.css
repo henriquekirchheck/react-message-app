@@ -8,5 +8,5 @@
 .loginForm {
   padding: 20px;
   border-radius: 10px;
-  background-color: var(--nord3);
+  background-color: var(--elevated-background-color);
 }

@@ -1,5 +1,19 @@
 @import './nord.css';
 
+:root, html[data-theme='dark'] {
+  --background-color: var(--nord0);
+  --elevated-background-color: var(--nord1);
+  --highlight-color: var(--nord2);
+  --text-color: var(--nord6);
+}
+
+html[data-theme='light'] {
+  --background-color: var(--nord6);
+  --elevated-background-color: var(--nord4);
+  --highlight-color: var(--nord5);
+  --text-color: var(--nord0);
+}
+
 body {
   margin: 0;
   padding: 0;
