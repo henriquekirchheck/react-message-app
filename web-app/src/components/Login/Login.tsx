@@ -1,5 +1,6 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
+import LoginStyles from './style.module.css'
 
 export function Login() {
   const [name, setName] = useState('')
@@ -22,8 +23,8 @@ export function Login() {
   }
 
   return (
-    <>
-      <form action="" onSubmit={handleLogin}>
+    <div className={LoginStyles.loginBox}>
+      <form action="" onSubmit={handleLogin} className={LoginStyles.loginForm}>
         <input
           type="text"
           autoComplete="off"
@@ -41,6 +42,6 @@ export function Login() {
         </div>
         <button type="submit">Send</button>
       </form>
-    </>
+    </div>
   )
 }
