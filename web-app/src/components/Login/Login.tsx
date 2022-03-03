@@ -1,20 +1,19 @@
-import { FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 
 export function Login() {
   const [name, setName] = useState('')
-  const [image, setImage] = useState()
+  const [image, setImage] = useState<File | undefined>(undefined)
 
   function handleLogin(event: FormEvent) {
     event.preventDefault()
 
     if (!name.trim()) return
-    if (!image) return
 
     console.log(name, image)
   }
 
   return (
-    <div>
+    <>
       <form action="" onSubmit={handleLogin}>
         <input
           type="text"
@@ -25,11 +24,11 @@ export function Login() {
         />
         <input
           type="file"
-          // TODO: Fix type of event
-          onChange={(event) => setImage(event.target.files[0])}
+          accept="image/*"
+          onChange={(event: ChangeEvent<HTMLInputElement>) => setImage(event.target.files?.[0])}
         />
         <button type="submit">Send</button>
       </form>
-    </div>
+    </>
   )
 }
