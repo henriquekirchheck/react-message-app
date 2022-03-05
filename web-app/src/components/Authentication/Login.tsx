@@ -21,7 +21,7 @@ export function Login() {
         <div className={AuthStyles.inputFields}>
           <input
             type="text"
-            autoComplete="off"
+            autoComplete="on"
             required={true}
             onChange={(event) => setEmail(event.target.value)}
             value={email}
@@ -30,7 +30,7 @@ export function Login() {
           />
           <input
             type="password"
-            autoComplete="off"
+            autoComplete="current-password"
             required={true}
             onChange={(event) => setPassword(event.target.value)}
             value={password}

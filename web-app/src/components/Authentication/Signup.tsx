@@ -36,7 +36,7 @@ export function Signup() {
         <div className={AuthStyles.inputFields}>
           <input
             type="text"
-            autoComplete="off"
+            autoComplete="on"
             required={true}
             onChange={(event) => setEmail(event.target.value)}
             value={email}
@@ -45,7 +45,7 @@ export function Signup() {
           />
           <input
             type="password"
-            autoComplete="off"
+            autoComplete="new-password"
             required={true}
             onChange={(event) => setPassword(event.target.value)}
             value={password}
@@ -55,7 +55,7 @@ export function Signup() {
           />
           <input
             type="password"
-            autoComplete="off"
+            autoComplete="new-password"
             required={true}
             onChange={(event) => setConfirmPassword(event.target.value)}
             value={confirmPassword}
