@@ -25,3 +25,12 @@ Your app is ready to be deployed!
 ## Change server ip:
 
 To change the ip that the server will look for the server, modify `./src/services/webSocket.ts`
+
+## Add Firebase API Keys
+
+This app uses Firebase for authentication, so you need to create a firebase project and add authentication to it  
+
+I plan to support Email, Google and Github Authentication in this app, so you need to enable the three for now
+
+To add the enviroment variables, add a `.env` file in the `web-app` folder and add the variables to it  
+the name of the variables are declared in `firebase.ts`
