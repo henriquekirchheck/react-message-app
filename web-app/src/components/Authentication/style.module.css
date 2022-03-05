@@ -23,6 +23,7 @@
   margin: 0;
 }
 
+
 .inputFields {
   display: flex;
   flex-direction: column;
@@ -46,6 +47,11 @@
   border: 2px transparent;
   border-radius: 5px;
   cursor: pointer;
+  color: black;
+}
+
+.submitButton:disabled {
+  filter: brightness(0.95);
 }
 
 @keyframes error_shake {
@@ -57,8 +63,19 @@
   100% { transform: translate(0px);}
 }
 
+.errorAlert {
+  margin: 0;
+  background-color: var(--danger-color);
+  padding: 10px;
+  border: 2px transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
 .error {
-  border: solid var(--danger-color);
+  border: 2px solid var(--danger-color);
 }
 
 .errorAnimation {

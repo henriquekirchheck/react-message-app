@@ -1,30 +1,38 @@
 import { FormEvent, useState } from 'react'
 import AuthStyles from './style.module.css'
+import { useAuth } from '../../hooks/useAuth'
 
 export function Signup() {
+  const { signUp } = useAuth()
+
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [confirmPassword, setConfirmPassword] = useState<string>('')
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
 
-  function handleLogin(event: FormEvent) {
+  async function handleLogin(event: FormEvent) {
     event.preventDefault()
+    setError(null)
 
-    if (!email.trim()) return
-    if (!password.trim()) return
-    if (!confirmPassword.trim()) return
-    if (password !== confirmPassword) return
+    if (password !== confirmPassword)
+      return setError('The passwords doesn\'t match')
 
-    console.log(email, password)
+    try {
+      setLoading(true)
+      setError(null)
+      signUp(email, password)
+    } catch {
+      setError('Failed to Create Account')
+    }
+    setLoading(false)
   }
 
   return (
     <div className={AuthStyles.authBox}>
-      <form
-        action=""
-        onSubmit={handleLogin}
-        className={AuthStyles.authForm}
-      >
+      <form action="" onSubmit={handleLogin} className={AuthStyles.authForm}>
         <h1 className={AuthStyles.title}>Sign Up to continue</h1>
+        {error && <div className={AuthStyles.errorAlert}>{error}</div>}
         <div className={AuthStyles.inputFields}>
           <input
             type="text"
@@ -36,25 +44,31 @@ export function Signup() {
             className={AuthStyles.input}
           />
           <input
-            type="text"
+            type="password"
             autoComplete="off"
             required={true}
             onChange={(event) => setPassword(event.target.value)}
             value={password}
             placeholder="Password"
-            className={AuthStyles.input}
+            className={`${AuthStyles.input} ${error ? AuthStyles.error : ''}`}
+            minLength={8}
           />
           <input
-            type="text"
+            type="password"
             autoComplete="off"
             required={true}
             onChange={(event) => setConfirmPassword(event.target.value)}
             value={confirmPassword}
             placeholder="Confirm Password"
-            className={AuthStyles.input}
+            className={`${AuthStyles.input} ${error ? AuthStyles.error : ''}`}
+            minLength={8}
           />
         </div>
-        <button type="submit" className={AuthStyles.submitButton}>
+        <button
+          disabled={loading}
+          type="submit"
+          className={AuthStyles.submitButton}
+        >
           Create Account
         </button>
       </form>

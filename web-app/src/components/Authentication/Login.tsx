@@ -29,13 +29,14 @@ export function Login() {
             className={AuthStyles.input}
           />
           <input
-            type="text"
+            type="password"
             autoComplete="off"
             required={true}
             onChange={(event) => setPassword(event.target.value)}
             value={password}
             placeholder="Put your Password here"
             className={AuthStyles.input}
+            minLength={8}
           />
         </div>
         <button type="submit" className={AuthStyles.submitButton}>
