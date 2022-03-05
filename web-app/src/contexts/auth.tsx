@@ -7,8 +7,7 @@ type User = {
 }
 
 type AuthContextData = {
-  user: User | null
-  signOut: () => void
+  user: User | undefined
 }
 
 type AuthProvider = {
@@ -18,15 +17,11 @@ type AuthProvider = {
 const AuthContext = createContext({} as AuthContextData)
 
 function AuthProvider(props: AuthProvider) {
-  const [ user, setUser ] = useState<User | null>(null)
+  const [ user, setUser ] = useState<User | undefined>(undefined)
 
-  function signOut() {
-    setUser(null)
-    localStorage.removeItem('@react-message:user')
-  }
 
   return (
-    <AuthContext.Provider value={{ user, signOut }}>
+    <AuthContext.Provider value={{ user }}>
       {props.children}
     </AuthContext.Provider>
   )

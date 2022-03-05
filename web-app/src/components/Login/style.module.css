@@ -8,17 +8,26 @@
 .loginForm {
   display: flex;
   flex-direction: column;
+  min-width: 360px;
   padding: 20px;
   border-radius: 10px;
+  gap: 15px;
   background-color: var(--elevated-background-color);
 }
 
 .title {
   text-align: center;
-  margin-top: 0;
+  font-size: 32px;
+  margin: 0;
 }
 
-.nameInput {
+.inputFields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input {
   padding: 8px;
   background-color: var(--highlight-color);
   color: var(--text-color);
@@ -37,33 +46,6 @@
   cursor: pointer;
 }
 
-.imageInput {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 375px;
-  height: 75px;
-  padding: 25px;
-  background-color: var(--highlight-color);
-  margin: 10px 0;
-  border: 2px dashed var(--text-color);
-  border-radius: 5px;
-  cursor: pointer;
-  transition: border .24s ease-in-out;
-}
-
-.imageActive {
-  border-color: var(--warning-color);
-}
-
-.imageAccept {
-  border-color: var(--success-color);
-}
-
-.imageReject {
-  border-color: var(--error-color);
-}
-
 @keyframes error_shake {
   0% { transform: translate(8px);}
   20% { transform: translate(-8px);}
@@ -73,32 +55,10 @@
   100% { transform: translate(0px);}
 }
 
+.error {
+  border: solid var(--danger-color);
+}
+
 .errorAnimation {
   animation: error_shake 0.5s 1 linear;
-}
-
-.imagePreview {
-  display: flex;
-  flex-direction: row;
-  height: 75px;
-  width: 100%;
-  justify-content: center;
-  gap: 20px;
-}
-
-.previewImage {
-  display: block;
-  border: 2px transparent;
-  border-radius: 5px;
-}
-
-.imageInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-}
-
-.info {
-  margin: 0;
 }
