@@ -1,11 +1,13 @@
-.loginBox {
+.authBox {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.loginForm {
+.authForm {
   display: flex;
   flex-direction: column;
   min-width: 360px;

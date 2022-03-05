@@ -1,22 +1,24 @@
 import { FormEvent, useState } from 'react'
-import LoginStyles from './style.module.css'
+import AuthStyles from './style.module.css'
 
 export function Login() {
   const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   function handleLogin(event: FormEvent) {
     event.preventDefault()
 
     if (!email.trim()) return
+    if (!password.trim()) return
 
     console.log(email)
   }
 
   return (
-    <div className={LoginStyles.loginBox}>
-      <form action="" onSubmit={handleLogin} className={LoginStyles.loginForm}>
-        <h1 className={LoginStyles.title}>Login to continue</h1>
-        <div className={LoginStyles.inputFields}>
+    <div className={AuthStyles.authBox}>
+      <form action="" onSubmit={handleLogin} className={AuthStyles.authForm}>
+        <h1 className={AuthStyles.title}>Login to continue</h1>
+        <div className={AuthStyles.inputFields}>
           <input
             type="text"
             autoComplete="off"
@@ -24,22 +26,25 @@ export function Login() {
             onChange={(event) => setEmail(event.target.value)}
             value={email}
             placeholder="Put your Email here"
-            className={LoginStyles.input}
+            className={AuthStyles.input}
           />
           <input
             type="text"
             autoComplete="off"
             required={true}
-            onChange={(event) => setEmail(event.target.value)}
-            value={email}
+            onChange={(event) => setPassword(event.target.value)}
+            value={password}
             placeholder="Put your Password here"
-            className={LoginStyles.input}
+            className={AuthStyles.input}
           />
         </div>
-        <button type="submit" className={LoginStyles.submitButton}>
+        <button type="submit" className={AuthStyles.submitButton}>
           Login
         </button>
       </form>
+      <div className={AuthStyles.extraOption}>
+        Don't have a account? Sign Up
+      </div>
     </div>
   )
 }
