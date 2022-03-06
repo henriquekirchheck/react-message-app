@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react'
+import { Link } from 'react-router-dom'
 import AuthStyles from './style.module.css'
 
 export function Login() {
@@ -44,7 +45,7 @@ export function Login() {
         </button>
       </form>
       <div className={AuthStyles.extraOption}>
-        Don't have a account? Sign Up
+        Don't have a account? <Link to="/signup" className={AuthStyles.link}>Sign Up</Link>
       </div>
     </div>
   )

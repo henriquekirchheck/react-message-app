@@ -81,3 +81,7 @@
 .errorAnimation {
   animation: error_shake 0.5s 1 linear;
 }
+
+.link {
+  color: var(--primary-color);
+}

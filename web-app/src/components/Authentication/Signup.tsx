@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react'
+import { Link } from 'react-router-dom'
 import AuthStyles from './style.module.css'
 import { useAuth } from '../../hooks/useAuth'
 
@@ -73,7 +74,7 @@ export function Signup() {
         </button>
       </form>
       <div className={AuthStyles.extraOption}>
-        Already have a account? Login
+        Already have a account? <Link to="/login" className={AuthStyles.link}>Login</Link>
       </div>
     </div>
   )
