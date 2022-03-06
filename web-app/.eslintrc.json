@@ -21,12 +21,8 @@
             "error",
             2
         ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
         "quotes": [
-            "error",
+            "warn",
             "single"
         ],
         "semi": [
@@ -34,6 +30,7 @@
             "never"
         ],
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/exhaustive-deps": "warn",
+        "linebreak-style": "off"
     }
 }
