@@ -1,24 +1,37 @@
 import { FormEvent, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 import AuthStyles from './style.module.css'
 
 export function Login() {
+  const { login } = useAuth()
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState<boolean>(false)
 
-  function handleLogin(event: FormEvent) {
+  async function handleLogin(event: FormEvent) {
     event.preventDefault()
+    setError(null)
 
-    if (!email.trim()) return
-    if (!password.trim()) return
-
-    console.log(email)
+    try {
+      setLoading(true)
+      setError(null)
+      await login(email, password)
+      navigate('/app')
+    } catch {
+      setError('Failed to Login')
+    }
+    setLoading(false)
   }
 
   return (
     <div className={AuthStyles.authBox}>
       <form action="" onSubmit={handleLogin} className={AuthStyles.authForm}>
         <h1 className={AuthStyles.title}>Login to continue</h1>
+        {error && <div className={AuthStyles.errorAlert}>{error}</div>}
         <div className={AuthStyles.inputFields}>
           <input
             type="email"
@@ -27,7 +40,7 @@ export function Login() {
             onChange={(event) => setEmail(event.target.value)}
             value={email}
             placeholder="Put your Email here"
-            className={AuthStyles.input}
+            className={`${AuthStyles.input} ${error ? `${AuthStyles.error} ${AuthStyles.errorAnimation}` : ''}`}
           />
           <input
             type="password"
@@ -36,16 +49,23 @@ export function Login() {
             onChange={(event) => setPassword(event.target.value)}
             value={password}
             placeholder="Put your Password here"
-            className={AuthStyles.input}
+            className={`${AuthStyles.input} ${error ? `${AuthStyles.error} ${AuthStyles.errorAnimation}` : ''}`}
             minLength={8}
           />
         </div>
-        <button type="submit" className={AuthStyles.submitButton}>
+        <button
+          disabled={loading}
+          type="submit"
+          className={AuthStyles.submitButton}
+        >
           Login
         </button>
       </form>
       <div className={AuthStyles.extraOption}>
-        Don't have a account? <Link to="/signup" className={AuthStyles.link}>Sign Up</Link>
+        Don't have a account?{' '}
+        <Link to="/signup" className={AuthStyles.link}>
+          Sign Up
+        </Link>
       </div>
     </div>
   )

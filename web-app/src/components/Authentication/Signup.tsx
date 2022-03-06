@@ -1,10 +1,11 @@
 import { FormEvent, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AuthStyles from './style.module.css'
 import { useAuth } from '../../hooks/useAuth'
 
 export function Signup() {
-  const { signUp } = useAuth()
+  const { signup } = useAuth()
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -22,7 +23,8 @@ export function Signup() {
     try {
       setLoading(true)
       setError(null)
-      signUp(email, password)
+      await signup(email, password)
+      navigate('/app')
     } catch {
       setError('Failed to Create Account')
     }
@@ -51,7 +53,7 @@ export function Signup() {
             onChange={(event) => setPassword(event.target.value)}
             value={password}
             placeholder="Password"
-            className={`${AuthStyles.input} ${error ? AuthStyles.error : ''}`}
+            className={`${AuthStyles.input} ${error ? `${AuthStyles.error} ${AuthStyles.errorAnimation}` : ''}`}
             minLength={8}
           />
           <input
@@ -61,7 +63,7 @@ export function Signup() {
             onChange={(event) => setConfirmPassword(event.target.value)}
             value={confirmPassword}
             placeholder="Confirm Password"
-            className={`${AuthStyles.input} ${error ? AuthStyles.error : ''}`}
+            className={`${AuthStyles.input} ${error ? `${AuthStyles.error} ${AuthStyles.errorAnimation}` : ''}`}
             minLength={8}
           />
         </div>
@@ -74,7 +76,10 @@ export function Signup() {
         </button>
       </form>
       <div className={AuthStyles.extraOption}>
-        Already have a account? <Link to="/login" className={AuthStyles.link}>Login</Link>
+        Already have a account?{' '}
+        <Link to="/login" className={AuthStyles.link}>
+          Login
+        </Link>
       </div>
     </div>
   )
