@@ -3,7 +3,7 @@ import { Home } from './components/Home'
 import AppStyles from './style/App.module.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Chat } from './components/Chat'
-import { PrivateRoute } from './components/RouteWrapper'
+import { PrivateRoute } from './components/PrivateRoute'
 import { useAuth } from './hooks/useAuth'
 
 export function App() {
