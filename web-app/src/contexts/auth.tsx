@@ -19,13 +19,17 @@ const AuthContext = createContext({} as AuthContextData)
 
 function AuthProvider(props: AuthProvider) {
   const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState<boolean>(true)
 
   function signUp(email: string, password: string) {
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => setUser(user))
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user)
+      setLoading(false)
+    })
 
     return unsubscribe
   }, [])
@@ -36,7 +40,9 @@ function AuthProvider(props: AuthProvider) {
   }
 
   return (
-    <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
+    <AuthContext.Provider value={value}>
+      {!loading && props.children}
+    </AuthContext.Provider>
   )
 }
 

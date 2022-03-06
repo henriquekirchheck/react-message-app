@@ -8,7 +8,7 @@
   --primary-color: var(--nord8);
   --primary-color-add: var(--nord7);
   --secondary-color: var(--nord9);
-  --tertiary-color: var(--nord10)
+  --tertiary-color: var(--nord10);
 }
 
 :root, html[data-theme='dark'] {
