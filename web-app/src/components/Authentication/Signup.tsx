@@ -35,7 +35,7 @@ export function Signup() {
         {error && <div className={AuthStyles.errorAlert}>{error}</div>}
         <div className={AuthStyles.inputFields}>
           <input
-            type="text"
+            type="email"
             autoComplete="on"
             required={true}
             onChange={(event) => setEmail(event.target.value)}

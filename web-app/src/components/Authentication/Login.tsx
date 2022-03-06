@@ -20,7 +20,7 @@ export function Login() {
         <h1 className={AuthStyles.title}>Login to continue</h1>
         <div className={AuthStyles.inputFields}>
           <input
-            type="text"
+            type="email"
             autoComplete="on"
             required={true}
             onChange={(event) => setEmail(event.target.value)}
