@@ -1,4 +1,5 @@
 import { Login, Signup } from './components/Authentication'
+import { Home } from './components/Home'
 import AppStyles from './style/App.module.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './contexts/auth'
@@ -10,11 +11,10 @@ export function App() {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route path="/">
-              <Route path="signup" element={<Signup />} />
-              <Route path="login" element={<Login />} />
-              <Route path="chat" element={<Chat />} />
-            </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="login" element={<Login />} />
+            <Route path="chat" element={<Chat />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>
