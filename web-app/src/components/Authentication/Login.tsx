@@ -12,6 +12,7 @@ export function Login() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(false)
 
+
   async function handleLogin(event: FormEvent) {
     event.preventDefault()
     setError(null)
@@ -20,7 +21,7 @@ export function Login() {
       setLoading(true)
       setError(null)
       await login(email, password)
-      navigate('/app')
+      navigate('/chat', {replace: true})
     } catch {
       setError('Failed to Login')
     }

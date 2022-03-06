@@ -24,7 +24,7 @@ export function Signup() {
       setLoading(true)
       setError(null)
       await signup(email, password)
-      navigate('/app')
+      navigate('/chat', { replace: true })
     } catch {
       setError('Failed to Create Account')
     }
