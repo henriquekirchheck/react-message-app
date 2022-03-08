@@ -9,14 +9,15 @@ const io = new Server(httpServer, {
 })
 
 io.on('connection', (socket) => {
-  console.log('a user connected')
+  console.log(`Socket Connected: ${socket.id}`)
 
   socket.on('disconnect', () => {
-    console.log('a user disconnected')
+    console.log(`Socket Disconnected: ${socket.id}`)
   })
 
-  socket.on('message', (message) => {
-    io.emit('message', message)
+  socket.on('message:create', (message) => {
+    console.log(message)
+    socket.broadcast.emit('message:read', message)
   })
 })
 
