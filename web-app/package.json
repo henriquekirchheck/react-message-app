@@ -31,7 +31,7 @@
     "url": "git+https://github.com/henriquekirchheck/react-message-app.git"
   },
   "author": "Henrique Kirch Heck",
-  "license": "MIT",
+  "license": "GNU General Public License v3.0",
   "bugs": {
     "url": "https://github.com/henriquekirchheck/react-message-app/issues"
   },
