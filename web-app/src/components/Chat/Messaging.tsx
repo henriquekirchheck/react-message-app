@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { socket } from '../../services/socket'
 import MessagingStyles from './style.module.css'
 
@@ -16,15 +16,22 @@ export function Messaging() {
     setMessage('')
   }
 
-  socket.on('message:read', (message) => {
-    setMessages([...messages, message])
-  })
+  useEffect(() => {
+    socket.on('message:read', (message) => {
+      setMessages([...messages, message])
+    })
+    return () => socket.off('message:read')
+  }, [messages])
 
   return (
     <div className={MessagingStyles.page}>
       <ul className={MessagingStyles.messageList}>
         {messages.map((message, index) => {
-          return <li key={index} className={MessagingStyles.messages}>{message}</li>
+          return (
+            <li key={index} className={MessagingStyles.messages}>
+              {message}
+            </li>
+          )
         })}
       </ul>
       <form onSubmit={handleSubmit} className={MessagingStyles.form}>
