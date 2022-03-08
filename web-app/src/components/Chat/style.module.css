@@ -1,0 +1,45 @@
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+.messageList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow-y: scroll;
+}
+
+.messages {
+  padding: 0.5rem 1rem;
+  word-wrap: break-word;
+}
+
+.form {
+  display: flex;
+  padding: 0.25rem;
+  min-height: 3rem;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+}
+
+.inputForm {
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 10px;
+  background-color: var(--highlight-color);
+  border: 2px transparent;
+  color: var(--text-color);
+  flex-grow: 1;
+}
+
+.buttonForm {
+  border-radius: 10px;
+  background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border: 2px transparent;
+  padding: 0 1rem;
+  margin: 0.25rem;
+}

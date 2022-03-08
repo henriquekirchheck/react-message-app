@@ -5,8 +5,8 @@ export function Chat() {
   socket.connect()
 
   return (
-    <div>
+    <>
       <Messaging />
-    </div>
+    </>
   )
 }
