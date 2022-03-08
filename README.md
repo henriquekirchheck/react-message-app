@@ -16,6 +16,6 @@ Enter into the project directory (Ex: `web-app`) and use:
 - [ ] Usernames
 - [ ] Chatrooms
 - [ ] Database
-- [ ] Authentication
+- [X] Authentication
 - [ ] Electron App
 - [ ] React Native App
