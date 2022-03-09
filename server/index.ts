@@ -1,5 +1,6 @@
 import { httpServer } from './src/server'
-import { port, hostname, argv, help } from './src/parseArguments'
+import { port, hostname, argv } from './src/parseArguments'
+import { help } from './src/help'
 
 argv?.help
   ? help()
