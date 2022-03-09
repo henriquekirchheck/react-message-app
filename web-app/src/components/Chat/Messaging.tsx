@@ -17,10 +17,12 @@ export function Messaging() {
   }
 
   useEffect(() => {
-    socket.on('message:read', (message) => {
+    const messagesAdd = (message: string) => {
       setMessages([...messages, message])
-    })
-    return () => socket.off('message:read')
+    }
+    socket.on('message:read', messagesAdd)
+
+    return () => {socket.off('message:read', messagesAdd)}
   }, [messages])
 
   return (
