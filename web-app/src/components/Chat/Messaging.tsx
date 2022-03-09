@@ -22,7 +22,9 @@ export function Messaging() {
     }
     socket.on('message:read', messagesAdd)
 
-    return () => {socket.off('message:read', messagesAdd)}
+    return () => {
+      socket.off('message:read', messagesAdd)
+    }
   }, [messages])
 
   return (
