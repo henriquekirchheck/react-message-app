@@ -30,6 +30,7 @@ model Message {
 
 model Group {
   id       String    @id @unique
+  name     String
   messages Message[]
   users    User[]
 }
