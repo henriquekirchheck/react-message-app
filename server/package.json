@@ -5,7 +5,9 @@
   "main": "index.ts",
   "scripts": {
     "start": "nodemon -e ts,mts,json --exec 'ts-node .' --",
-    "build": "tsc --project ./"
+    "build": "tsc --project ./",
+    "studio": "prisma studio",
+    "migrate": "prisma migrate dev"
   },
   "repository": {
     "type": "git",
@@ -31,9 +33,11 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
+    "@prisma/client": "^3.10.0",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "minimist": "^1.2.5",
+    "prisma": "^3.10.0",
     "socket.io": "^4.4.1"
   }
 }

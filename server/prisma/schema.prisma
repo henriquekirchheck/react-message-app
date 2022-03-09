@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id         String    @id @unique
+  username   String    @unique
+  avatar_url String
+  messages   Message[]
+  groups     Group[]
+}
+
+model Message {
+  id        String   @id @unique
+  createdAt DateTime @default(now())
+  text      String
+  senderId  String
+  groupId   String
+  sender    User     @relation(fields: [senderId], references: [id])
+  group     Group    @relation(fields: [groupId], references: [id])
+}
+
+model Group {
+  id       String    @id @unique
+  messages Message[]
+  users    User[]
+}
