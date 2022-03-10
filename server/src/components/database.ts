@@ -1,8 +1,8 @@
 import cuid from 'cuid'
 import { prisma } from '../services/prisma'
 
-function getGroups(name?: string, id?: string) {
-  return prisma.group.findMany({
+async function getGroups(name?: string, id?: string) {
+  return await prisma.group.findMany({
     where: {
       name,
       id,
@@ -10,8 +10,8 @@ function getGroups(name?: string, id?: string) {
   })
 }
 
-function createGroup(name: string) {
-  return prisma.group.create({
+async function createGroup(name: string) {
+  return await prisma.group.create({
     data: {
       id: cuid(),
       name,
@@ -19,12 +19,21 @@ function createGroup(name: string) {
   })
 }
 
-function deleteGroup(id: string) {
-  return prisma.group.delete({
+async function deleteGroup(id: string) {
+  return await prisma.group.delete({
     where: {
       id
     }
   })
 }
 
-export { createGroup, getGroups, deleteGroup }
+async function getUsers(username?: string, id?: string) {
+  return await prisma.user.findMany({
+    where: {
+      username,
+      id,
+    }
+  })
+}
+
+export { createGroup, getGroups, deleteGroup, getUsers }
