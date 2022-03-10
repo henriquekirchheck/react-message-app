@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createGroup, deleteGroup, getGroups } from './components/database'
+import { createGroup, deleteGroup, getGroups } from './database'
 
 const groupsRouter = Router()
 
