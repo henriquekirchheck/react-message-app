@@ -19,4 +19,12 @@ function createGroup(name: string) {
   })
 }
 
-export { createGroup, getGroups }
+function deleteGroup(id: string) {
+  return prisma.group.delete({
+    where: {
+      id
+    }
+  })
+}
+
+export { createGroup, getGroups, deleteGroup }
