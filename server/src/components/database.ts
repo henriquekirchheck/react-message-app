@@ -36,10 +36,10 @@ async function getUsers(username?: string, id?: string) {
   })
 }
 
-async function createUser(username: string, avatar_url: string) {
+async function createUser(username: string, id:string, avatar_url: string) {
   return await prisma.user.create({
     data: {
-      id: cuid(),
+      id,
       username,
       avatar_url,
     },

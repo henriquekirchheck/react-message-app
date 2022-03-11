@@ -16,8 +16,8 @@ usersRouter.get('/', (req, res) => {
 })
 
 usersRouter.post('/add', (req, res) => {
-  const { username, avatar_url } = req.body
-  createUser(username, avatar_url)
+  const { username, avatar_url, id } = req.body
+  createUser(username, id, avatar_url)
     .then((user) => {
       res.json(user)
     })
