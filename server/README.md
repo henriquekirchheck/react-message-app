@@ -27,3 +27,8 @@ You can add `--port {port}` or `-p {port}` to change the port. Defaut port is `8
   
 You can add `--hostname {hostname}` or `-h {hostname}` to modify the hostname. Default hostname is `localhost`
 
+## Create DB
+
+To create the database, install all dependencies and run `npx prisma migrate dev`
+To get the Prisma Client so you can interact with the database, run `npx prisma generate`
+
