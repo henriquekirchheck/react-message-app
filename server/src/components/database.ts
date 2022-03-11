@@ -46,4 +46,12 @@ async function createUser(username: string, avatar_url: string) {
   })
 }
 
-export { createGroup, getGroups, deleteGroup, getUsers, createUser }
+async function deleteUser(id: string) {
+  return await prisma.user.delete({
+    where: {
+      id
+    }
+  })
+}
+
+export { createGroup, getGroups, deleteGroup, getUsers, createUser, deleteUser }

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createUser, getUsers } from './database'
+import { createUser, deleteUser, getUsers } from './database'
 
 const usersRouter = Router()
 
@@ -22,7 +22,19 @@ usersRouter.post('/add', (req, res) => {
       res.json(user)
     })
     .catch((reason) => {
-      res.status(400) 
+      res.status(400)
+      res.json(reason)
+    })
+})
+
+usersRouter.delete('/delete', (req, res) => {
+  const { id } = req.body
+  deleteUser(id)
+    .then((user) => {
+      res.json(user)
+    })
+    .catch((reason) => {
+      res.status(400)
       res.json(reason)
     })
 })
