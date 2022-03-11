@@ -22,8 +22,8 @@ async function createGroup(name: string) {
 async function deleteGroup(id: string) {
   return await prisma.group.delete({
     where: {
-      id
-    }
+      id,
+    },
   })
 }
 
@@ -32,8 +32,18 @@ async function getUsers(username?: string, id?: string) {
     where: {
       username,
       id,
-    }
+    },
   })
 }
 
-export { createGroup, getGroups, deleteGroup, getUsers }
+async function createUser(username: string, avatar_url: string) {
+  return await prisma.user.create({
+    data: {
+      id: cuid(),
+      username,
+      avatar_url,
+    },
+  })
+}
+
+export { createGroup, getGroups, deleteGroup, getUsers, createUser }

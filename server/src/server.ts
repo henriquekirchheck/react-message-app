@@ -3,12 +3,14 @@ import express from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
 import { groupsRouter } from './components/groups'
+import { usersRouter } from './components/users'
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 app.use('/groups', groupsRouter)
+app.use('/users', usersRouter)
 
 const httpServer = http.createServer(app)
 const io = new Server(httpServer, {

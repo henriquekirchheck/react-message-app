@@ -1,6 +1,5 @@
 import { Router } from 'express'
-import { getUsers } from './database'
-
+import { createUser, getUsers } from './database'
 
 const usersRouter = Router()
 
@@ -15,3 +14,17 @@ usersRouter.get('/', (req, res) => {
       res.json(reason)
     })
 })
+
+usersRouter.post('/add', (req, res) => {
+  const { username, avatar_url } = req.body
+  createUser(username, avatar_url)
+    .then((user) => {
+      res.json(user)
+    })
+    .catch((reason) => {
+      res.status(400) 
+      res.json(reason)
+    })
+})
+
+export { usersRouter }
